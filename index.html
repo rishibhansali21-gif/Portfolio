@@ -348,17 +348,9 @@ nav {
 
 /* ── ABOUT ── */
 .about-section { background: var(--bg-off); padding: 96px 56px; }
-.about-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 72px; align-items: center; margin-top: 52px; }
-.about-visual { aspect-ratio: 3/4; background: var(--amalfi); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); }
-.av-dots { position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 22px 22px; }
-.av-mono { font-family: 'Bebas Neue', sans-serif; font-size: 108px; letter-spacing: 0.08em; color: rgba(255,255,255,0.04); position: relative; z-index: 1; }
-.av-tag { position: absolute; top: 14px; left: 14px; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--w45); }
-.av-badge { position: absolute; bottom: 14px; right: 14px; background: var(--citrus); color: var(--amalfi-deep); font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 14px; border: 2px solid var(--ink); }
-.av-sea { position: absolute; top: 0; right: 0; width: 6px; height: 100%; background: var(--sea); }
-
 .about-h { font-family: 'Crimson Pro', serif; font-size: clamp(26px, 3.2vw, 42px); font-weight: 300; line-height: 1.22; margin-bottom: 20px; color: var(--ink); }
 .about-h em { font-style: italic; background: var(--citrus); color: var(--amalfi-deep); padding: 0 6px; }
-.about-body { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.9; margin-bottom: 24px; }
+.about-body { font-size: 15px; font-weight: 300; color: var(--mid); line-height: 1.9; margin-bottom: 24px; max-width: 700px; }
 .about-body strong { color: var(--ink); font-weight: 600; }
 
 /* GEN-Z MEME CARDS */
@@ -577,7 +569,14 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 @media(max-width:960px){ .hero{grid-template-columns:1fr} .hero-right,.sticker,.spin-badge{display:none} }
 @media(max-width:768px){
   nav{padding:16px 20px;top:36px} .nav-links{display:none}
-  .hero,.about-section,.cat-section,.services-section,.work-section,.contact-section{padding-left:22px;padding-right:22px}
+  .work-section { padding-left:22px; padding-right:22px; }
+  .work-grid { grid-template-columns: 1fr 1fr; gap: 3px; }
+  .wi-v  { grid-column: span 1; aspect-ratio: 9/16; min-height: 220px; }
+  .wi-hf { grid-column: span 2; aspect-ratio: 16/9; }
+  .wi-hh { grid-column: span 2; aspect-ratio: 16/9; }
+  .work-item[style*="grid-column:span 6"] { grid-column: span 2 !important; }
+  .work-item[style*="grid-column:span 6"] > div { grid-template-columns: 1fr 1fr !important; }
+  .hero,.about-section,.cat-section,.services-section,.contact-section{padding-left:22px;padding-right:22px}
   .stats-bar{grid-template-columns:repeat(3,1fr)}
   .about-grid{grid-template-columns:1fr} .about-visual{display:none}
   .work-grid{grid-template-columns:1fr 1fr} .work-item.horizontal{grid-column:span 2}
@@ -723,12 +722,12 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
   </div>
   <div class="work-grid reveal" id="workGrid">
     <!-- ROW 1 — 3 vertical -->
-    <div class="work-item wi-v" data-src="https://www.youtube.com/embed/J3_BFS2uz1g" data-thumb="https://img.youtube.com/vi/J3_BFS2uz1g/maxresdefault.jpg" data-title="Edit 01" data-num="01"></div>
-    <div class="work-item wi-v" data-src="" data-thumb="" data-title="Edit 02" data-num="02"></div>
-    <div class="work-item wi-v" data-src="" data-thumb="" data-title="Edit 03" data-num="03"></div>
+    <div class="work-item wi-v" data-src="https://www.youtube.com/embed/J3_BFS2uz1g" data-thumb="https://img.youtube.com/vi/J3_BFS2uz1g/maxresdefault.jpg" data-title="Edit 01" data-num="01" data-views="YOUR_VIEWS" data-objpos="top"></div>
+    <div class="work-item wi-v" data-src="" data-thumb="" data-title="Edit 02" data-num="02" data-views="" data-objpos="center"></div>
+    <div class="work-item wi-v" data-src="" data-thumb="" data-title="Edit 03" data-num="03" data-views="" data-objpos="center"></div>
 
     <!-- ROW 2 — 1 full-width horizontal -->
-    <div class="work-item wi-hf" data-src="https://www.youtube.com/embed/Muuw0TP-XYo" data-thumb="https://img.youtube.com/vi/Muuw0TP-XYo/maxresdefault.jpg" data-title="Edit 04" data-num="04"></div>
+    <div class="work-item wi-hf" data-src="https://www.youtube.com/embed/Muuw0TP-XYo" data-thumb="https://img.youtube.com/vi/Muuw0TP-XYo/maxresdefault.jpg" data-title="Edit 04" data-num="04" data-views="YOUR_VIEWS" data-objpos="top"></div>
 
     <!-- ROW 3 — 2 half-width horizontals -->
     <div class="work-item wi-hh" data-src="" data-thumb="" data-title="Edit 05" data-num="05"></div>
@@ -769,40 +768,31 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 <!-- ABOUT -->
 <section id="about" class="about-section">
   <div class="sec-ey reveal"><span class="sec-pill-b">About Me</span></div>
-  <div class="about-grid">
-    <div class="about-visual reveal">
-      <div class="av-dots"></div>
-      <div class="av-sea"></div>
-      <span class="av-tag">Editor · Creator</span>
-      <div class="av-mono">RJ</div>
-      <div class="av-badge">1,825 Days In</div>
+  <div class="reveal">
+    <h3 class="about-h">I edit with instinct,<br><em>not just software.</em></h3>
+    <p class="about-body">
+      I'm Rishi — <strong>five years of real production experience</strong>, built entirely through doing.
+      Studios. Freelance. Every niche that matters. I've studied what makes content perform
+      and built a process around it.
+    </p>
+    <!-- Professional value cards -->
+    <div class="meme-cards">
+      <div class="meme-c">🎬 Production-grade quality</div>
+      <div class="meme-c">⚡ Fast, reliable turnarounds</div>
+      <div class="meme-c">🎯 Edited for retention & reach</div>
+      <div class="meme-c">✦ Every format covered</div>
+      <div class="meme-c">📐 Built from real studio work</div>
+      <div class="meme-c">📱 Short-form & long-form both</div>
     </div>
-    <div class="reveal">
-      <h3 class="about-h">I edit with instinct,<br><em>not just software.</em></h3>
-      <p class="about-body">
-        I'm Rishi — <strong>five years of real production experience</strong>, built entirely through doing.
-        Studios. Freelance. Every niche that matters. I've studied what makes content perform
-        and built a process around it.
-      </p>
-      <!-- Professional value cards -->
-      <div class="meme-cards">
-        <div class="meme-c">🎬 Production-grade quality</div>
-        <div class="meme-c">⚡ Fast, reliable turnarounds</div>
-        <div class="meme-c">🎯 Edited for retention & reach</div>
-        <div class="meme-c">✦ Every format covered</div>
-        <div class="meme-c">📐 Built from real studio work</div>
-        <div class="meme-c">📱 Short-form & long-form both</div>
-      </div>
-      <div class="skills-list">
-        <span class="skill-tag">Premiere Pro</span>
-        <span class="skill-tag">After Effects</span>
-        <span class="skill-tag">Motion Graphics</span>
-        <span class="skill-tag">Colour Grading</span>
-        <span class="skill-tag">Reels & Short-form</span>
-        <span class="skill-tag">Ad Film Editing</span>
-        <span class="skill-tag">CapCut</span>
-        <span class="skill-tag">English & Hindi</span>
-      </div>
+    <div class="skills-list">
+      <span class="skill-tag">Premiere Pro</span>
+      <span class="skill-tag">After Effects</span>
+      <span class="skill-tag">Motion Graphics</span>
+      <span class="skill-tag">Colour Grading</span>
+      <span class="skill-tag">Reels & Short-form</span>
+      <span class="skill-tag">Ad Film Editing</span>
+      <span class="skill-tag">CapCut</span>
+      <span class="skill-tag">English & Hindi</span>
     </div>
   </div>
 </section>
@@ -996,16 +986,18 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 
   // ── Render work grid items from data attributes ──
   document.querySelectorAll('.work-item[data-num]').forEach(item => {
-    const src   = item.dataset.src   || '';
-    const thumb = item.dataset.thumb || '';
-    const num   = item.dataset.num   || '';
-    const title = item.dataset.title || '';
+    const src     = item.dataset.src    || '';
+    const thumb   = item.dataset.thumb  || '';
+    const num     = item.dataset.num    || '';
+    const title   = item.dataset.title  || '';
+    const views   = item.dataset.views  || '';
+    const objpos  = item.dataset.objpos || 'center';
     const hasVideo = src.length > 0;
 
     item.style.cursor = hasVideo ? 'pointer' : 'default';
 
     const thumbBg = hasVideo && thumb
-      ? `<img src="${thumb}" alt="${title}" style="width:100%;height:100%;object-fit:cover;display:block;">`
+      ? `<img src="${thumb}" alt="${title}" style="width:100%;height:100%;object-fit:cover;object-position:${objpos};display:block;">`
       : `<div style="width:100%;height:100%;background:linear-gradient(155deg,#1e3d74,#264d94);display:flex;align-items:center;justify-content:center;">
            <span style="font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:0.2em;color:rgba(255,255,255,0.2);">COMING SOON</span>
          </div>`;
@@ -1014,15 +1006,26 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
       ? `<div class="work-play">▶</div>`
       : '';
 
+    const viewsBadge = hasVideo && views && !views.startsWith('YOUR')
+      ? `<div style="position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.72);color:#fff;font-size:11px;font-weight:700;letter-spacing:0.08em;padding:5px 10px;border-radius:3px;z-index:4;display:flex;align-items:center;gap:5px;backdrop-filter:blur(4px);">
+           <span style="color:#FFA62B;">▶</span> ${views}
+         </div>`
+      : '';
+
     item.innerHTML = `
       <div class="work-thumb">
         ${thumbBg}
         ${playBtn}
       </div>
+      ${viewsBadge}
       <div class="work-overlay">
-        <div>
+        <div style="width:100%">
           <span class="work-num">${num}</span>
-          <div class="work-title-row">${hasVideo ? 'Watch Now' : 'Coming Soon'} <span class="work-arr">↗</span></div>
+          <div class="work-title-row">
+            ${hasVideo ? 'Watch Now' : 'Coming Soon'}
+            ${views && !views.startsWith('YOUR') ? `<span style="font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:var(--citrus);letter-spacing:0.06em;">${views} views</span>` : ''}
+            <span class="work-arr">↗</span>
+          </div>
         </div>
       </div>`;
 
