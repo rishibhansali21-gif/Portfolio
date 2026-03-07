@@ -129,14 +129,14 @@ nav {
 .hero-dot-grid {
   position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(circle, rgba(46,90,167,0.08) 1.5px, transparent 1.5px);
-  background-size: 28px 28px;
+  background-size: 28px 28px; z-index: 0;
 }
 /* Big decorative BG text */
 .hero-bg-text {
   position: absolute; bottom: -20px; right: -20px;
-  font-family: 'Bebas Neue', sans-serif; font-size: 300px; line-height: 1;
+  font-family: 'Bebas Neue', sans-serif; font-size: 260px; line-height: 1;
   color: rgba(46,90,167,0.04); pointer-events: none; letter-spacing: -0.02em;
-  user-select: none;
+  user-select: none; z-index: 0;
 }
 
 .hero-left { position: relative; z-index: 2; }
@@ -144,7 +144,7 @@ nav {
 /* Pill eyebrow */
 .eyebrow-row {
   display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
-  opacity: 0; animation: up 0.7s ease 0.1s forwards;
+  animation: up 0.7s ease 0.1s both;
 }
 .pill-blue { background: var(--amalfi); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; }
 .pill-citrus { background: var(--citrus); color: var(--amalfi-deep); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; }
@@ -157,7 +157,7 @@ nav {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(90px, 13vw, 165px);
   line-height: 0.86; letter-spacing: 0.01em; margin-bottom: 18px;
-  opacity: 0; animation: up 0.7s ease 0.18s forwards;
+  animation: up 0.7s ease 0.18s both;
 }
 .t-rishi { background: var(--citrus); color: var(--amalfi-deep); padding: 0 12px 4px; display: inline-block; line-height: 0.94; }
 .t-jain { display: block; color: var(--ink); }
@@ -165,7 +165,7 @@ nav {
 /* Meme subtitle row */
 .hero-meme-row {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 22px;
-  opacity: 0; animation: up 0.7s ease 0.28s forwards;
+  animation: up 0.7s ease 0.28s both;
 }
 .meme-chip {
   font-size: 12px; font-weight: 600; padding: 6px 14px;
@@ -181,11 +181,11 @@ nav {
   font-size: 15px; font-weight: 300; line-height: 1.85; color: var(--mid);
   max-width: 480px; margin-bottom: 38px;
   border-left: 3px solid var(--amalfi); padding-left: 18px;
-  opacity: 0; animation: up 0.7s ease 0.36s forwards;
+  animation: up 0.7s ease 0.36s both;
 }
 .hero-desc strong { color: var(--ink); font-weight: 600; }
 
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; opacity: 0; animation: up 0.7s ease 0.46s forwards; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; animation: up 0.7s ease 0.46s both; }
 .btn-fill {
   background: var(--amalfi); color: var(--white);
   padding: 14px 30px; font-size: 12px; font-weight: 700;
@@ -207,7 +207,7 @@ nav {
 .hero-right {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; gap: 10px;
-  opacity: 0; animation: up 0.7s ease 0.3s forwards;
+  animation: up 0.7s ease 0.3s both;
 }
 /* Tilted badge on the card */
 .hc-main {
@@ -364,7 +364,7 @@ nav {
 
 /* ── CATEGORIES ── */
 .cat-section { background: var(--amalfi-dark); padding: 96px 56px; }
-.cat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-top: 52px; }
+.cat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
 .cat-card { background: rgba(255,255,255,0.06); padding: 36px 22px; border-bottom: 4px solid transparent; transition: all 0.25s; }
 .cat-card:hover { border-bottom-color: var(--citrus); background: rgba(255,255,255,0.12); }
 .cat-ico { font-size: 32px; margin-bottom: 14px; display: block; }
@@ -408,8 +408,8 @@ nav {
 .contact-pre { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--w45); margin-bottom: 12px; }
 .contact-dot { width: 6px; height: 6px; background: var(--citrus); border-radius: 50%; }
 
-/* gen-z line */
-.contact-genz { font-size: 15px; font-style: italic; color: var(--w70); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; letter-spacing: 0.01em; }
+/* refined italic sub-line */
+.contact-genz { font-size: 15px; font-style: italic; color: var(--w70); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 8px; letter-spacing: 0.01em; font-weight: 300; }
 
 .contact-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px, 8vw, 110px); letter-spacing: 0.03em; line-height: 0.9; color: var(--white); margin-bottom: 48px; }
 .contact-title .hl { background: var(--citrus); color: var(--amalfi-deep); padding: 0 14px; display: inline-block; }
@@ -448,8 +448,113 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 @keyframes up { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+/* Fallback — make everything visible after 2s in case JS fails */
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .eyebrow-row, .hero-title, .hero-meme-row, .hero-desc, .hero-actions, .hero-right { animation: none; opacity: 1; }
+}
 
-/* ── RESPONSIVE ── */
+/* ── FOUNDER SECTION ── */
+.founder-section { background: var(--bg); padding: 96px 56px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.founder-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
+
+/* Photo frame */
+.founder-photo-wrap { position: relative; }
+.founder-photo-frame {
+  position: relative;
+  border: 3px solid var(--ink);
+  box-shadow: 10px 10px 0 var(--ink);
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--bg-off);
+}
+.founder-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.founder-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+  background: linear-gradient(155deg, var(--amalfi-dark), var(--amalfi));
+}
+.fp-initials {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 96px; color: rgba(255,255,255,0.12); letter-spacing: 0.06em;
+}
+.fp-hint {
+  font-size: 11px; color: var(--w45); letter-spacing: 0.14em;
+  text-transform: uppercase; text-align: center; padding: 0 20px;
+  border: 1px dashed var(--wb); padding: 8px 16px;
+}
+
+/* Brutalist corner tags */
+.founder-tag-tl {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--citrus); color: var(--amalfi-deep);
+  font-size: 9px; font-weight: 800; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 5px 10px;
+  border: 1.5px solid var(--ink);
+}
+.founder-tag-br {
+  position: absolute; bottom: 14px; right: 14px;
+  background: var(--ink); color: var(--white);
+  font-size: 9px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 5px 10px;
+}
+
+/* Copy */
+.founder-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.88; letter-spacing: 0.02em;
+  color: var(--ink); margin-bottom: 28px;
+}
+.fh-name {
+  display: block;
+  background: var(--citrus); color: var(--amalfi-deep);
+  padding: 0 12px 4px; display: inline-block; line-height: 0.94;
+}
+.founder-body {
+  font-size: 15px; font-weight: 300; color: var(--mid);
+  line-height: 1.88; margin-bottom: 18px;
+}
+.founder-body strong { color: var(--ink); font-weight: 600; }
+
+/* Stat chips */
+.founder-chips { display: flex; gap: 10px; flex-wrap: wrap; margin: 28px 0 32px; }
+.founder-chip {
+  border: 2px solid var(--ink); padding: 14px 20px;
+  display: flex; flex-direction: column; align-items: center;
+  min-width: 90px;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.founder-chip:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--ink); }
+.founder-chip-citrus { background: var(--citrus); }
+.fc-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 36px; color: var(--ink); line-height: 1; margin-bottom: 4px;
+}
+.fc-lbl { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); text-align: center; }
+.founder-chip-citrus .fc-lbl { color: var(--amalfi-deep); }
+
+/* CTA */
+.founder-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--amalfi); color: var(--white);
+  padding: 14px 32px; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: all 0.2s;
+}
+.founder-cta:hover { background: var(--citrus); color: var(--amalfi-deep); transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--ink); }
+
+@media(max-width:768px){
+  .founder-section { padding: 64px 22px; }
+  .founder-inner { grid-template-columns: 1fr; gap: 40px; }
+}
+
+
 @media(max-width:960px){ .hero{grid-template-columns:1fr} .hero-right,.sticker,.spin-badge{display:none} }
 @media(max-width:768px){
   nav{padding:16px 20px;top:36px} .nav-links{display:none}
@@ -469,7 +574,7 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 <div class="cursor-blob" id="cursorBlob"></div>
 
 <!-- Toast notification -->
-<div class="toast" id="toast">🔥 street-taught editor just dropped</div>
+<div class="toast" id="toast">✦ Now taking on new projects</div>
 
 <div class="modal-overlay" id="modal">
   <div class="modal-box">
@@ -482,19 +587,19 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 <div class="top-ticker">
   <div class="ticker-track">
     <span class="ticker-item">🎬 CREATIVE EDITOR <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">8.5M+ VIEWS <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">5 YEARS EXPERIENCE <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">STREET-TAUGHT <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">GAMING · ENTERTAINMENT · EDUCATION <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">AVAILABLE FOR WORK <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">REELS · YT EDITS · MOTION GRAPHICS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">10M+ VIEWS GENERATED <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">5 YEARS OF PRODUCTION <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">RESULTS-DRIVEN EDITING <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">MULTI-NICHE · ALL FORMATS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">AVAILABLE FOR PROJECTS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">REELS · LONG-FORM · MOTION GRAPHICS <span class="ticker-star">✦</span></span>
     <span class="ticker-item">🎬 CREATIVE EDITOR <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">8.5M+ VIEWS <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">5 YEARS EXPERIENCE <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">STREET-TAUGHT <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">GAMING · ENTERTAINMENT · EDUCATION <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">AVAILABLE FOR WORK <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">REELS · YT EDITS · MOTION GRAPHICS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">10M+ VIEWS GENERATED <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">5 YEARS OF PRODUCTION <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">RESULTS-DRIVEN EDITING <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">MULTI-NICHE · ALL FORMATS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">AVAILABLE FOR PROJECTS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">REELS · LONG-FORM · MOTION GRAPHICS <span class="ticker-star">✦</span></span>
   </div>
 </div>
 
@@ -526,15 +631,15 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
   <div class="spin-badge">
     <svg viewBox="0 0 96 96" width="96" height="96">
       <defs><path id="cp" d="M 48,48 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0"/></defs>
-      <text><textPath href="#cp">STREET-TAUGHT · RESULTS-PROVEN · </textPath></text>
+      <text><textPath href="#cp">EXPERIENCE-BUILT · RESULTS-DRIVEN · </textPath></text>
     </svg>
     <div class="spin-badge-center">✦</div>
   </div>
 
   <div class="hero-left">
     <div class="eyebrow-row">
-      <span class="pill-blue">Creative Editor</span>
-      <span class="avail"><span class="avail-dot"></span>Available for work</span>
+      <span class="pill-blue">Creative Editor · Available Now</span>
+      <span class="avail"><span class="avail-dot"></span>Taking on new projects</span>
     </div>
 
     <h1 class="hero-title">
@@ -542,18 +647,18 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
       <span class="t-jain">JAIN</span>
     </h1>
 
-    <!-- meme chips -->
+    <!-- client-focused chips -->
     <div class="hero-meme-row">
-      <span class="meme-chip">🎮 Gaming</span>
-      <span class="meme-chip meme-chip-fill">no cap, 8.5M views fr 🔥</span>
-      <span class="meme-chip">5 yrs exp</span>
-      <span class="meme-chip">W editor ✦</span>
+      <span class="meme-chip">🎬 Multi-Niche Editor</span>
+      <span class="meme-chip meme-chip-fill">10M+ Views Generated ✦</span>
+      <span class="meme-chip">5 Years. Real Results.</span>
+      <span class="meme-chip">For Creators Who Mean Business</span>
     </div>
 
     <p class="hero-desc">
-      Not self-taught. <strong>Street-taught.</strong> 5 years of figuring it out by
-      actually doing it — gaming, entertainment, education, lifestyle.
-      My edits have pulled <strong>8.5M+ views</strong> for creators who trust the work over the résumé.
+      Not a course graduate. Not a template user.
+      Built from <strong>5 years of real production work</strong> — studios, freelance, and everything in between.
+      My edits have generated <strong>10M+ views</strong> for creators who care about quality, not just quantity.
     </p>
 
     <div class="hero-actions">
@@ -567,15 +672,15 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
       <div class="hc-dots"></div>
       <div class="hc-sticker">🎬</div>
       <p class="hc-lbl">Views Generated</p>
-      <p class="hc-num">8.5<em>M+</em></p>
+      <p class="hc-num">10<em>M+</em></p>
       <p class="hc-sub">Across all edited content</p>
     </div>
     <div class="hc-row">
-      <div class="hc-sm"><span class="hcsm-n">5+</span><span class="hcsm-l">Years In</span></div>
-      <div class="hc-sm"><span class="hcsm-n">4</span><span class="hcsm-l">Niches</span></div>
+      <div class="hc-sm"><span class="hcsm-n">5+</span><span class="hcsm-l">Years Production</span></div>
+      <div class="hc-sm"><span class="hcsm-n">∞</span><span class="hcsm-l">Niches Covered</span></div>
     </div>
     <div class="hc-tag">
-      <span class="hct-t">Street-Taught. Results-Proven.</span>
+      <span class="hct-t">Experience-Built. Results-Driven.</span>
       <span class="hct-a">↗</span>
     </div>
   </div>
@@ -583,9 +688,9 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 
 <!-- STATS BAR -->
 <div class="stats-bar reveal">
-  <div class="stat-item"><span class="stat-n">8.5M+</span><span class="stat-l">Views Generated</span></div>
-  <div class="stat-item"><span class="stat-n">5+</span><span class="stat-l">Years In</span></div>
-  <div class="stat-item"><span class="stat-n">Street</span><span class="stat-l">Taught · Results Proven</span></div>
+  <div class="stat-item"><span class="stat-n">10M+</span><span class="stat-l">Views Generated</span></div>
+  <div class="stat-item"><span class="stat-n">5+</span><span class="stat-l">Years of Production</span></div>
+  <div class="stat-item"><span class="stat-n">Every</span><span class="stat-l">Niche. Every Format.</span></div>
 </div>
 
 <!-- WORK -->
@@ -597,39 +702,59 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
     </div>
     <p class="work-savage">My best edits.<br><span class="hi">No filters. No excuses.</span></p>
   </div>
-  <div class="work-grid reveal">
-    <a class="work-item" href="#" onclick="openVideo(event,'https://www.youtube.com/embed/mgFiQ0vCJzU?si=At_Cy9kjsJKTf')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">01</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item" href="#" onclick="openVideo(event,'YOUR_LINK_2')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">02</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item" href="#" onclick="openVideo(event,'YOUR_LINK_3')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">03</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item" href="#" onclick="openVideo(event,'YOUR_LINK_4')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">04</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item" href="#" onclick="openVideo(event,'YOUR_LINK_5')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">05</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item" href="#" onclick="openVideo(event,'YOUR_LINK_6')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">06</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item horizontal" href="#" onclick="openVideo(event,'YOUR_LINK_7')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">07</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item horizontal" href="#" onclick="openVideo(event,'YOUR_LINK_8')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">08</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item small-v" href="#" onclick="openVideo(event,'YOUR_LINK_9')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">09</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
-    <a class="work-item small-v" href="#" onclick="openVideo(event,'YOUR_LINK_10')"><div class="work-thumb"><div class="work-play">▶</div></div><div class="work-overlay"><div><span class="work-num">10</span><div class="work-title-row">Watch Now <span class="work-arr">↗</span></div></div></div></a>
+  <div class="work-grid reveal" id="workGrid">
+    <!--
+    ============================================================
+    HOW TO ADD YOUR VIDEOS — READ THIS ONCE, THEN DELETE
+
+    For each video, find the matching slot below and fill in:
+
+    1. YouTube link:
+       src="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
+       thumb="" ← leave blank, auto-generates from YouTube
+
+    2. MP4 file (uploaded to your GitHub repo):
+       src="videos/your-file.mp4"
+       thumb="thumbs/your-thumb.jpg" ← optional custom image
+
+    3. Re-uploaded to YouTube (same as option 1)
+
+    Title: change "Edit 01" to your video's actual title
+    ============================================================
+    -->
+
+    <div class="work-item" data-src="https://www.youtube.com/embed/_YhAWm9g-eg" data-thumb="https://img.youtube.com/vi/_YhAWm9g-eg/maxresdefault.jpg" data-title="Edit 01" data-num="01"></div>
+    <div class="work-item" data-src="" data-thumb="" data-title="Edit 02" data-num="02"></div>
+    <div class="work-item" data-src="" data-thumb="" data-title="Edit 03" data-num="03"></div>
+    <div class="work-item" data-src="" data-thumb="" data-title="Edit 04" data-num="04"></div>
+    <div class="work-item" data-src="" data-thumb="" data-title="Edit 05" data-num="05"></div>
+    <div class="work-item" data-src="" data-thumb="" data-title="Edit 06" data-num="06"></div>
+    <div class="work-item horizontal" data-src="" data-thumb="" data-title="Edit 07" data-num="07"></div>
+    <div class="work-item horizontal" data-src="" data-thumb="" data-title="Edit 08" data-num="08"></div>
+    <div class="work-item small-v" data-src="" data-thumb="" data-title="Edit 09" data-num="09"></div>
+    <div class="work-item small-v" data-src="" data-thumb="" data-title="Edit 10" data-num="10"></div>
   </div>
 </section>
 
-<!-- CITRUS MEME TICKER -->
+<!-- CITRUS TICKER -->
 <div class="citrus-ticker">
   <div class="ticker-track">
-    <span class="ticker-item">🔥 HITS DIFFERENT <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">NO CAP FR <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">GOES CRAZY <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">W EDITOR <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">BUSSIN EDITS <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">POV: YOUR CONTENT BLOWS UP <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">SLAY THE TIMELINE <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">LOWKEY THE GOAT <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">🔥 HITS DIFFERENT <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">NO CAP FR <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">GOES CRAZY <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">W EDITOR <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">BUSSIN EDITS <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">POV: YOUR CONTENT BLOWS UP <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">SLAY THE TIMELINE <span class="ticker-star">✦</span></span>
-    <span class="ticker-item">LOWKEY THE GOAT <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">YOUR AUDIENCE DESERVES BETTER EDITS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">CONTENT THAT CONVERTS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">EVERY FRAME INTENTIONAL <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">YOUR STORY. MY TIMELINE. <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">BUILT TO PERFORM <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">VIEWS DON'T LIE <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">EDIT FAST. LOOK PREMIUM. <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">ONE EDITOR. INFINITE RANGE. <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">YOUR AUDIENCE DESERVES BETTER EDITS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">CONTENT THAT CONVERTS <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">EVERY FRAME INTENTIONAL <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">YOUR STORY. MY TIMELINE. <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">BUILT TO PERFORM <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">VIEWS DON'T LIE <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">EDIT FAST. LOOK PREMIUM. <span class="ticker-star">✦</span></span>
+    <span class="ticker-item">ONE EDITOR. INFINITE RANGE. <span class="ticker-star">✦</span></span>
   </div>
 </div>
 
@@ -642,22 +767,23 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
       <div class="av-sea"></div>
       <span class="av-tag">Editor · Creator</span>
       <div class="av-mono">RJ</div>
-      <div class="av-badge">5 Years In</div>
+      <div class="av-badge">1,825 Days In</div>
     </div>
     <div class="reveal">
       <h3 class="about-h">I edit with instinct,<br><em>not just software.</em></h3>
       <p class="about-body">
-        I'm Rishi — <strong>5 years of real-world experience</strong>, zero classroom shortcuts.
-        Built in studios, forged in freelance, proven across every niche that matters.
+        I'm Rishi — <strong>five years of real production experience</strong>, built entirely through doing.
+        Studios. Freelance. Every niche that matters. I've studied what makes content perform
+        and built a process around it.
       </p>
-      <!-- GEN-Z MEME CARDS -->
+      <!-- Professional value cards -->
       <div class="meme-cards">
-        <div class="meme-c">🎮 Gaming edits that hit</div>
-        <div class="meme-c">⚡ Fast turnarounds, fr</div>
-        <div class="meme-c">🎬 Cinematic or bust</div>
-        <div class="meme-c">🔥 No mid content allowed</div>
-        <div class="meme-c">💯 5 yrs, no shortcuts</div>
-        <div class="meme-c">📱 Short-form era unlocked</div>
+        <div class="meme-c">🎬 Production-grade quality</div>
+        <div class="meme-c">⚡ Fast, reliable turnarounds</div>
+        <div class="meme-c">🎯 Edited for retention & reach</div>
+        <div class="meme-c">✦ Every format covered</div>
+        <div class="meme-c">📐 Built from real studio work</div>
+        <div class="meme-c">📱 Short-form & long-form both</div>
       </div>
       <div class="skills-list">
         <span class="skill-tag">Premiere Pro</span>
@@ -673,17 +799,86 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
   </div>
 </section>
 
+<!-- FOUNDER SECTION -->
+<section class="founder-section">
+  <div class="founder-inner reveal">
+    <!-- LEFT: Photo -->
+    <div class="founder-photo-wrap">
+      <div class="founder-photo-frame">
+        <img src="YOUR_PHOTO_URL" alt="Rishi Jain" class="founder-photo" id="founderImg"
+             onerror="this.style.display='none';document.getElementById('founderPlaceholder').style.display='flex'">
+        <!-- Placeholder shown until real photo is added -->
+        <div class="founder-placeholder" id="founderPlaceholder">
+          <span class="fp-initials">RJ</span>
+          <span class="fp-hint">← Replace with your photo</span>
+        </div>
+        <!-- Brutalist accent tags -->
+        <div class="founder-tag-tl">THE EDITOR</div>
+        <div class="founder-tag-br">SURAT, IN 📍</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Copy -->
+    <div class="founder-copy">
+      <div class="sec-ey" style="margin-bottom:20px">
+        <span class="sec-pill-b">The Person Behind The Edits</span>
+      </div>
+      <h2 class="founder-heading">
+        Hi, I'm<br>
+        <span class="fh-name">Rishi.</span>
+      </h2>
+      <p class="founder-body">
+        I didn't follow a curriculum. I opened a timeline and
+        <strong>refused to close it until I understood</strong> exactly why great content
+        performs and average content doesn't. That was five years ago.
+      </p>
+      <p class="founder-body">
+        Since then — studio experience, freelance builds, and <strong>10M+ views</strong>
+        across every format and niche that matters. I'm not here to make videos.
+        I'm here to make <strong>your</strong> videos the ones people finish watching.
+      </p>
+
+      <!-- Founder stat chips -->
+      <div class="founder-chips">
+        <div class="founder-chip">
+          <span class="fc-num">5+</span>
+          <span class="fc-lbl">Years Production</span>
+        </div>
+        <div class="founder-chip">
+          <span class="fc-num">10M</span>
+          <span class="fc-lbl">Views Generated</span>
+        </div>
+        <div class="founder-chip founder-chip-citrus">
+          <span class="fc-num">1</span>
+          <span class="fc-lbl">Editor. All Formats.</span>
+        </div>
+      </div>
+
+      <a href="#contact" class="founder-cta">Start a Project →</a>
+    </div>
+  </div>
+</section>
+
 <!-- CATEGORIES -->
 <section class="cat-section">
   <div class="reveal">
-    <div class="sec-ey"><span class="sec-pill-c">Niches</span></div>
-    <h2 class="sec-t sec-t-w">ALL NICHES.<br><span class="hi">ONE EDITOR.</span></h2>
+    <div class="sec-ey"><span class="sec-pill-c">Content Verticals</span></div>
+    <h2 class="sec-t sec-t-w">ANY NICHE.<br><span class="hi">ANY FORMAT.</span></h2>
+    <p style="color:var(--w45);font-size:15px;font-weight:300;margin-top:12px;max-width:520px;">
+      If your audience exists on YouTube, Instagram, or anywhere online — I've edited for that world.
+    </p>
   </div>
-  <div class="cat-grid reveal">
-    <div class="cat-card"><span class="cat-ico">🎮</span><p class="cat-name">Gaming</p><p class="cat-desc">Esports, tournaments, gameplay highlights — content that keeps viewers locked till the last second.</p></div>
-    <div class="cat-card"><span class="cat-ico">🎬</span><p class="cat-name">Entertainment</p><p class="cat-desc">High-energy storytelling edits that feel cinematic and scroll-stopping.</p></div>
-    <div class="cat-card"><span class="cat-ico">📚</span><p class="cat-name">Education</p><p class="cat-desc">Clean, structured edits that make complex content digestible and keep watch time high.</p></div>
-    <div class="cat-card"><span class="cat-ico">✨</span><p class="cat-name">Howto & Style</p><p class="cat-desc">Lifestyle and how-to content edited with the pacing and look that audiences share.</p></div>
+  <div class="cat-grid reveal" style="grid-template-columns:repeat(3,1fr);margin-top:52px;">
+    <div class="cat-card"><span class="cat-ico">🎮</span><p class="cat-name">Gaming & Esports</p><p class="cat-desc">High-energy gameplay, tournaments, and streamer content — built to keep viewers locked in till the last second.</p></div>
+    <div class="cat-card"><span class="cat-ico">🎬</span><p class="cat-name">Entertainment & Vlogs</p><p class="cat-desc">Storytelling-first edits that feel cinematic, scroll-stopping, and genuinely worth watching.</p></div>
+    <div class="cat-card"><span class="cat-ico">📚</span><p class="cat-name">Education & Explainers</p><p class="cat-desc">Structured, clear edits that simplify complex topics without sacrificing engagement or watch time.</p></div>
+    <div class="cat-card"><span class="cat-ico">💼</span><p class="cat-name">Business & Personal Brand</p><p class="cat-desc">Authority-building content for founders, coaches, and thought leaders who take their brand seriously.</p></div>
+    <div class="cat-card"><span class="cat-ico">✨</span><p class="cat-name">Lifestyle & How-To</p><p class="cat-desc">Aesthetic, shareable content edited with the pacing and look that audiences save and share.</p></div>
+    <div class="cat-card"><span class="cat-ico">📣</span><p class="cat-name">Branded & Ad Content</p><p class="cat-desc">Performance-focused edits built to convert — for products, services, and campaign-driven brands.</p></div>
+  </div>
+  <div class="reveal" style="margin-top:40px;text-align:center;">
+    <p style="color:var(--w45);font-size:14px;margin-bottom:16px;">Don't see your niche? That's fine — if you make content, I can edit it.</p>
+    <a href="#contact" class="btn-fill" style="display:inline-flex;">Work With Me →</a>
   </div>
 </section>
 
@@ -703,16 +898,16 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 <!-- PROOF TICKER -->
 <div class="proof-ticker">
   <div class="proof-track">
-    <div class="proof-item"><span class="proof-emoji">🎯</span><p class="proof-text"><strong>8.5M+ views</strong> generated across all content</p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">⚡</span><p class="proof-text">Worked across <strong>4 niches</strong></p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">🎬</span><p class="proof-text"><strong>5 years</strong> of real edits, zero filler</p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">📱</span><p class="proof-text">Reels, YT, motion — <strong>all in one</strong></p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">🔥</span><p class="proof-text">Street-taught. <strong>Results proven.</strong></p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">🎯</span><p class="proof-text"><strong>8.5M+ views</strong> generated across all content</p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">⚡</span><p class="proof-text">Worked across <strong>4 niches</strong></p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">🎬</span><p class="proof-text"><strong>5 years</strong> of real edits, zero filler</p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">📱</span><p class="proof-text">Reels, YT, motion — <strong>all in one</strong></p><span class="proof-sep">·</span></div>
-    <div class="proof-item"><span class="proof-emoji">🔥</span><p class="proof-text">Street-taught. <strong>Results proven.</strong></p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">🎯</span><p class="proof-text"><strong>10M+ views</strong> generated across all edited content</p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">⚡</span><p class="proof-text">Works across <strong>every major content vertical</strong></p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">🎬</span><p class="proof-text"><strong>5 years</strong> of production experience — zero shortcuts</p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">📱</span><p class="proof-text">Short-form, long-form, motion graphics — <strong>all covered</strong></p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">✦</span><p class="proof-text">Trusted by creators who care about <strong>quality, not just quantity</strong></p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">🎯</span><p class="proof-text"><strong>10M+ views</strong> generated across all edited content</p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">⚡</span><p class="proof-text">Works across <strong>every major content vertical</strong></p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">🎬</span><p class="proof-text"><strong>5 years</strong> of production experience — zero shortcuts</p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">📱</span><p class="proof-text">Short-form, long-form, motion graphics — <strong>all covered</strong></p><span class="proof-sep">·</span></div>
+    <div class="proof-item"><span class="proof-emoji">✦</span><p class="proof-text">Trusted by creators who care about <strong>quality, not just quantity</strong></p><span class="proof-sep">·</span></div>
   </div>
 </div>
 
@@ -720,12 +915,12 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 <section id="contact" class="contact-section">
   <div class="contact-bg-blob"></div>
   <div class="contact-inner">
-    <p class="contact-pre"><span class="contact-dot"></span>Ready to work together<span class="contact-dot"></span></p>
-    <p class="contact-genz">your content isn't gonna edit itself bestie 👀</p>
+    <p class="contact-pre"><span class="contact-dot"></span>Ready to invest in content that performs<span class="contact-dot"></span></p>
+    <p class="contact-genz">Your audience is watching. Make sure what they see is worth it.</p>
     <h2 class="contact-title">LET'S MAKE<br><span class="hl">GREAT CONTENT.</span></h2>
     <div class="contact-links">
       <a href="https://wa.me/919328299848" target="_blank" class="cl cl-p">💬 WhatsApp Me</a>
-      <a href="mailto:hello.niori@gmail.com" class="cl">✉ Email</a>
+      <a href="/cdn-cgi/l/email-protection#2d4548414142034344425f446d4a404c4441034e4240" class="cl">✉ Email</a>
       <a href="https://instagram.com/niori.co" target="_blank" class="cl">📸 Instagram</a>
       <a href="https://ytjobs.co/talent/profile/81204" target="_blank" class="cl">🎬 YT Jobs</a>
     </div>
@@ -735,10 +930,10 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
 <footer>
   <span class="footer-logo"><span class="footer-dot"></span>RISHI JAIN</span>
   <span>© 2025 Rishi Jain. Creative Editor.</span>
-  <span>hello.niori@gmail.com</span>
+  <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="365e535a5a5918585f59445f76515b575f5a1855595b">[email&#160;protected]</a></span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Cursor
   const dot = document.getElementById('cursorDot');
   const blob = document.getElementById('cursorBlob');
@@ -787,9 +982,54 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
   const reveals = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver(entries => {
     entries.forEach((en, i) => { if(en.isIntersecting) setTimeout(()=>en.target.classList.add('visible'), i*70); });
-  }, { threshold: 0.06 });
+  }, { threshold: 0.04 });
   reveals.forEach(el => obs.observe(el));
-  setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 1400);
+  setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 600);
+
+  // ── Render work grid items from data attributes ──
+  document.querySelectorAll('#workGrid .work-item').forEach(item => {
+    const src   = item.dataset.src   || '';
+    const thumb = item.dataset.thumb || '';
+    const num   = item.dataset.num   || '';
+    const title = item.dataset.title || '';
+    const hasVideo = src.length > 0;
+
+    item.style.cursor = hasVideo ? 'pointer' : 'default';
+
+    const thumbBg = hasVideo && thumb
+      ? `<img src="${thumb}" alt="${title}" style="width:100%;height:100%;object-fit:cover;display:block;">`
+      : `<div style="width:100%;height:100%;background:linear-gradient(155deg,#1e3d74,#264d94);display:flex;align-items:center;justify-content:center;">
+           <span style="font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:0.2em;color:rgba(255,255,255,0.2);">COMING SOON</span>
+         </div>`;
+
+    const playBtn = hasVideo
+      ? `<div class="work-play">▶</div>`
+      : '';
+
+    item.innerHTML = `
+      <div class="work-thumb">
+        ${thumbBg}
+        ${playBtn}
+      </div>
+      <div class="work-overlay">
+        <div>
+          <span class="work-num">${num}</span>
+          <div class="work-title-row">${hasVideo ? 'Watch Now' : 'Coming Soon'} <span class="work-arr">↗</span></div>
+        </div>
+      </div>`;
+
+    if (hasVideo) {
+      item.addEventListener('click', () => playInline(item, src));
+    }
+  });
+
+  // ── Play video inline (replaces thumbnail with iframe) ──
+  function playInline(el, embedSrc) {
+    const autoSrc = embedSrc.includes('?') ? embedSrc + '&autoplay=1' : embedSrc + '?autoplay=1';
+    el.innerHTML = `<iframe src="${autoSrc}&rel=0" style="width:100%;height:100%;border:none;display:block;" allow="autoplay;fullscreen" allowfullscreen></iframe>`;
+    el.style.cursor = 'default';
+  }
+
 </script>
 </body>
 </html>
