@@ -751,4 +751,11 @@ document.querySelectorAll('.work-item[data-num]').forEach(item=>{
 
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
-const obs = new IntersectionObserver
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach((en,i)=>{if(en.isIntersecting) setTimeout(()=>en.target.classList.add('visible'),i*70);});
+},{threshold:0.04});
+reveals.forEach(el=>obs.observe(el));
+setTimeout(()=>reveals.forEach(el=>el.classList.add('visible')),100);
+</script>
+</body>
+</html>
