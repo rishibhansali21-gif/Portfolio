@@ -295,25 +295,44 @@ nav {
 .work-savage { font-family: 'Crimson Pro', serif; font-size: clamp(15px, 1.8vw, 21px); font-style: italic; font-weight: 300; color: var(--w45); max-width: 220px; text-align: right; line-height: 1.5; }
 .work-savage .hi { background: var(--citrus); color: var(--amalfi-deep); font-style: normal; padding: 0 5px; }
 
-.work-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; }
-.work-item { position: relative; aspect-ratio: 9/16; overflow: hidden; cursor: pointer; text-decoration: none; display: block; background: var(--amalfi-dark); }
-.work-item.horizontal { aspect-ratio: 16/9; grid-column: span 2; }
-.work-item.small-v { aspect-ratio: 9/16; }
+/*
+  MOSAIC GRID LAYOUT — 10 items:
+  Row 1: [V] [V] [V]          — 3 vertical (9:16)
+  Row 2: [H H H H H H]        — 1 full-width horizontal (16:9)
+  Row 3: [H H H] [H H H]      — 2 half-width horizontal (16:9)
+  Row 4: [V] [V] [V] [V]      — 4 vertical (9:16)
+*/
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3px;
+}
+
+/* Row 1 — 3 verticals, each takes 2 of 6 cols */
+.wi-v  { grid-column: span 2; aspect-ratio: 9/16; }
+
+/* Row 2 — 1 full-width horizontal */
+.wi-hf { grid-column: span 6; aspect-ratio: 21/9; }
+
+/* Row 3 — 2 half-width horizontals */
+.wi-hh { grid-column: span 3; aspect-ratio: 16/9; }
+
+/* Row 4 — 4 verticals, each takes 1.5 cols = span 1 of 4 equal */
+.wi-vs { grid-column: span 2; aspect-ratio: 9/16; }
+
+/* Shared work item styles */
+.work-item {
+  position: relative; overflow: hidden;
+  cursor: pointer; display: block;
+  background: var(--amalfi-dark);
+  transition: opacity 0.2s;
+}
+.work-item:hover { opacity: 0.92; }
 .work-thumb { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transition: transform 0.5s ease; }
-.work-item:hover .work-thumb { transform: scale(1.05); }
-.work-item:nth-child(1)  .work-thumb { background: linear-gradient(155deg,#1e3d74,#2e4e8a); }
-.work-item:nth-child(2)  .work-thumb { background: linear-gradient(155deg,#243f7a,#1a3060); }
-.work-item:nth-child(3)  .work-thumb { background: linear-gradient(155deg,#1e4480,#162c55); }
-.work-item:nth-child(4)  .work-thumb { background: linear-gradient(155deg,#222060,#1a1a50); }
-.work-item:nth-child(5)  .work-thumb { background: linear-gradient(155deg,#1e3d74,#152e5e); }
-.work-item:nth-child(6)  .work-thumb { background: linear-gradient(155deg,#243f7a,#1e3274); }
-.work-item:nth-child(7)  .work-thumb { background: linear-gradient(155deg,#22448a,#1e3d74); }
-.work-item:nth-child(8)  .work-thumb { background: linear-gradient(155deg,#1a3264,#162c55); }
-.work-item:nth-child(9)  .work-thumb { background: linear-gradient(155deg,#1e3d74,#243f7a); }
-.work-item:nth-child(10) .work-thumb { background: linear-gradient(155deg,#162c55,#1e3d74); }
-.work-play { width: 54px; height: 54px; background: var(--citrus); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--amalfi-deep); font-size: 18px; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(255,166,43,0.4); }
+.work-item:hover .work-thumb { transform: scale(1.04); }
+.work-play { width: 54px; height: 54px; background: var(--citrus); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--amalfi-deep); font-size: 18px; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(255,166,43,0.4); position: relative; z-index: 2; }
 .work-item:hover .work-play { transform: scale(1.16); box-shadow: 0 8px 30px rgba(255,166,43,0.6); }
-.work-overlay { position: absolute; inset: 0; background: rgba(30,61,116,0.94); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 20px; }
+.work-overlay { position: absolute; inset: 0; background: rgba(30,61,116,0.92); opacity: 0; transition: opacity 0.3s; display: flex; align-items: flex-end; padding: 20px; z-index: 3; }
 .work-item:hover .work-overlay { opacity: 1; }
 .work-num { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--citrus); margin-bottom: 4px; display: block; }
 .work-title-row { font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 0.06em; color: var(--white); display: flex; justify-content: space-between; }
@@ -703,36 +722,25 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
     <p class="work-savage">My best edits.<br><span class="hi">No filters. No excuses.</span></p>
   </div>
   <div class="work-grid reveal" id="workGrid">
-    <!--
-    ============================================================
-    HOW TO ADD YOUR VIDEOS — READ THIS ONCE, THEN DELETE
+    <!-- ROW 1 — 3 vertical -->
+    <div class="work-item wi-v" data-src="https://www.youtube.com/embed/J3_BFS2uz1g" data-thumb="https://img.youtube.com/vi/J3_BFS2uz1g/maxresdefault.jpg" data-title="Edit 01" data-num="01"></div>
+    <div class="work-item wi-v" data-src="" data-thumb="" data-title="Edit 02" data-num="02"></div>
+    <div class="work-item wi-v" data-src="" data-thumb="" data-title="Edit 03" data-num="03"></div>
 
-    For each video, find the matching slot below and fill in:
+    <!-- ROW 2 — 1 full-width horizontal -->
+    <div class="work-item wi-hf" data-src="https://www.youtube.com/embed/Muuw0TP-XYo" data-thumb="https://img.youtube.com/vi/Muuw0TP-XYo/maxresdefault.jpg" data-title="Edit 04" data-num="04"></div>
 
-    1. YouTube link:
-       src="https://www.youtube.com/watch?v=YOUR_VIDEO_ID"
-       thumb="" ← leave blank, auto-generates from YouTube
+    <!-- ROW 3 — 2 half-width horizontals -->
+    <div class="work-item wi-hh" data-src="" data-thumb="" data-title="Edit 05" data-num="05"></div>
+    <div class="work-item wi-hh" data-src="" data-thumb="" data-title="Edit 06" data-num="06"></div>
 
-    2. MP4 file (uploaded to your GitHub repo):
-       src="videos/your-file.mp4"
-       thumb="thumbs/your-thumb.jpg" ← optional custom image
-
-    3. Re-uploaded to YouTube (same as option 1)
-
-    Title: change "Edit 01" to your video's actual title
-    ============================================================
-    -->
-
-    <div class="work-item" data-src="https://www.youtube.com/embed/_YhAWm9g-eg" data-thumb="https://img.youtube.com/vi/_YhAWm9g-eg/maxresdefault.jpg" data-title="Edit 01" data-num="01"></div>
-    <div class="work-item" data-src="" data-thumb="" data-title="Edit 02" data-num="02"></div>
-    <div class="work-item" data-src="" data-thumb="" data-title="Edit 03" data-num="03"></div>
-    <div class="work-item" data-src="" data-thumb="" data-title="Edit 04" data-num="04"></div>
-    <div class="work-item" data-src="" data-thumb="" data-title="Edit 05" data-num="05"></div>
-    <div class="work-item" data-src="" data-thumb="" data-title="Edit 06" data-num="06"></div>
-    <div class="work-item horizontal" data-src="" data-thumb="" data-title="Edit 07" data-num="07"></div>
-    <div class="work-item horizontal" data-src="" data-thumb="" data-title="Edit 08" data-num="08"></div>
-    <div class="work-item small-v" data-src="" data-thumb="" data-title="Edit 09" data-num="09"></div>
-    <div class="work-item small-v" data-src="" data-thumb="" data-title="Edit 10" data-num="10"></div>
+    <!-- ROW 4 — 4 verticals in a subgrid wrapper -->
+    <div style="grid-column:span 6; display:grid; grid-template-columns:repeat(4,1fr); gap:3px;">
+      <div class="work-item wi-v" style="aspect-ratio:9/16;" data-src="" data-thumb="" data-title="Edit 07" data-num="07"></div>
+      <div class="work-item wi-v" style="aspect-ratio:9/16;" data-src="" data-thumb="" data-title="Edit 08" data-num="08"></div>
+      <div class="work-item wi-v" style="aspect-ratio:9/16;" data-src="" data-thumb="" data-title="Edit 09" data-num="09"></div>
+      <div class="work-item wi-v" style="aspect-ratio:9/16;" data-src="" data-thumb="" data-title="Edit 10" data-num="10"></div>
+    </div>
   </div>
 </section>
 
@@ -987,7 +995,7 @@ footer { background: var(--amalfi-deep); padding: 22px 56px; display: flex; just
   setTimeout(() => reveals.forEach(el => el.classList.add('visible')), 600);
 
   // ── Render work grid items from data attributes ──
-  document.querySelectorAll('#workGrid .work-item').forEach(item => {
+  document.querySelectorAll('.work-item[data-num]').forEach(item => {
     const src   = item.dataset.src   || '';
     const thumb = item.dataset.thumb || '';
     const num   = item.dataset.num   || '';
