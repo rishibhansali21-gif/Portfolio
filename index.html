@@ -137,39 +137,29 @@ nav{position:fixed;top:36px;left:0;right:0;z-index:100;display:flex;justify-cont
 .work-sub .hi{background:var(--citrus);color:var(--amalfi-x);font-style:normal;padding:0 5px;}
 
 /*
-  EDITORIAL MOSAIC — 12-column base, uneven & attention-grabbing
-
-  Row 1: [V 4col] [H 8col]          ← tall vertical left, wide horizontal right
-  Row 2: [V 3col] [V 3col] [H 6col] ← two verticals, one horizontal
-  Row 3: [H 8col] [V 4col]          ← wide horizontal left, tall vertical right
-  Row 4: [H 6col] [V 3col] [V 3col] ← horizontal then two verticals
+  FINAL GRID LAYOUT:
+  Row 1: [01 V 4col] [02 H 8col]   ← short left, wide right
+  Row 2: [05 H 8col] [03 V 4col]   ← mirror: wide left, short right
+  Row 3: [04 full 12col]            ← full cinematic width
 */
 .work-grid{
   display:grid;
   grid-template-columns:repeat(12,1fr);
-  gap:4px;
+  gap:0;
 }
-/* Row 1 */
-.wi-r1-v{grid-column:span 4;aspect-ratio:9/16;}
-.wi-r1-h{grid-column:span 8;aspect-ratio:16/9;}
-/* Row 2 */
-.wi-r2-v1{grid-column:span 3;aspect-ratio:9/16;}
-.wi-r2-v2{grid-column:span 3;aspect-ratio:9/16;}
-.wi-r2-h{grid-column:span 6;aspect-ratio:4/3;}
-/* Row 3 */
-.wi-r3-h{grid-column:span 8;aspect-ratio:16/9;}
-.wi-r3-v{grid-column:span 4;aspect-ratio:9/16;}
-/* Row 4 */
-.wi-r4-h{grid-column:span 6;aspect-ratio:4/3;}
-.wi-r4-v1{grid-column:span 3;aspect-ratio:9/16;}
-.wi-r4-v2{grid-column:span 3;aspect-ratio:9/16;}
-/* Full cinematic row */
-.wi-full{grid-column:span 12;aspect-ratio:21/9;}
-/* Breathing space row — video centred with dark side panels */
-.wi-breath-spacer{grid-column:span 2;background:var(--amalfi-x);min-height:300px;}
-.wi-breath-main{grid-column:span 8;aspect-ratio:16/9;}
+/* Row 1 — item 01 vertical, item 02 horizontal */
+.wi-01{grid-column:span 4;aspect-ratio:9/16;}
+.wi-02{grid-column:span 8;aspect-ratio:16/9;}
+/* Row 2 — item 05 horizontal (left), item 03 vertical (right) — mirrors row 1 */
+.wi-05{grid-column:span 8;aspect-ratio:16/9;}
+.wi-03{grid-column:span 4;aspect-ratio:9/16;}
+/* Row 3 — item 04 full cinematic width */
+.wi-04{grid-column:span 12;aspect-ratio:21/9;}
+/* Remaining slots */
+.wi-rest-h{grid-column:span 8;aspect-ratio:16/9;}
+.wi-rest-v{grid-column:span 4;aspect-ratio:9/16;}
 
-/* Slot placeholder colors so layout is visible even without thumbnails */
+/* Slot placeholder colors */
 .work-item:nth-child(1){background:linear-gradient(135deg,#1a3a6e,#2e5aa7);}
 .work-item:nth-child(2){background:linear-gradient(135deg,#162c55,#1e3d74);}
 .work-item:nth-child(3){background:linear-gradient(135deg,#1e3d74,#264d94);}
@@ -178,8 +168,6 @@ nav{position:fixed;top:36px;left:0;right:0;z-index:100;display:flex;justify-cont
 .work-item:nth-child(6){background:linear-gradient(135deg,#1e3d74,#1a3a6e);}
 .work-item:nth-child(7){background:linear-gradient(135deg,#243f7a,#1e3d74);}
 .work-item:nth-child(8){background:linear-gradient(135deg,#162c55,#243f7a);}
-.work-item:nth-child(9){background:linear-gradient(135deg,#1e3d74,#162c55);}
-.work-item:nth-child(10){background:linear-gradient(135deg,#2e5aa7,#1e3d74);}
 
 /* Shared work item */
 .work-item{position:relative;overflow:hidden;cursor:pointer;display:block;background:var(--amalfi-d);}
@@ -307,19 +295,15 @@ footer{background:var(--amalfi-x);padding:22px 56px;display:flex;justify-content
   nav{padding:16px 20px;top:36px;} .nav-links{display:none;}
   .hero,.about-section,.cat-section,.services-section,.work-section,.contact-section,.founder-section{padding-left:20px;padding-right:20px;}
   .hero{padding-top:140px;}
-  /* WORK GRID MOBILE — stack to 2 cols */
+  /* WORK GRID MOBILE */
   .work-grid{grid-template-columns:1fr 1fr;}
-  .wi-r1-v{grid-column:span 1;aspect-ratio:9/16;}
-  .wi-r1-h{grid-column:span 1;aspect-ratio:9/16;}
-  .wi-r2-v1,.wi-r2-v2{grid-column:span 1;aspect-ratio:9/16;}
-  .wi-r2-h{grid-column:span 2;aspect-ratio:16/9;}
-  .wi-full{grid-column:span 2;aspect-ratio:16/9;}
-  .wi-breath-spacer{display:none;}
-  .wi-breath-main{grid-column:span 2;aspect-ratio:16/9;}
-  .wi-r3-h{grid-column:span 2;aspect-ratio:16/9;}
-  .wi-r3-v{grid-column:span 2;aspect-ratio:16/9;}
-  .wi-r4-h{grid-column:span 2;aspect-ratio:16/9;}
-  .wi-r4-v1,.wi-r4-v2{grid-column:span 1;aspect-ratio:9/16;}
+  .wi-01{grid-column:span 1;aspect-ratio:9/16;}
+  .wi-02{grid-column:span 1;aspect-ratio:9/16;}
+  .wi-05{grid-column:span 2;aspect-ratio:16/9;}
+  .wi-03{grid-column:span 2;aspect-ratio:9/16;}
+  .wi-04{grid-column:span 2;aspect-ratio:16/9;}
+  .wi-rest-h{grid-column:span 2;aspect-ratio:16/9;}
+  .wi-rest-v{grid-column:span 1;aspect-ratio:9/16;}
   /* OTHER */
   .stats-bar{grid-template-columns:repeat(3,1fr);}
   .cat-grid{grid-template-columns:1fr 1fr;}
@@ -453,52 +437,45 @@ footer{background:var(--amalfi-x);padding:22px 56px;display:flex;justify-content
 
   <div class="work-grid reveal" id="workGrid">
 
-    <!-- ROW 1: vertical short + wide horizontal -->
-    <div class="work-item wi-r1-v"
+    <!-- ROW 1: [01 vertical short] [02 horizontal wide] -->
+    <div class="work-item wi-01"
          data-src="https://www.youtube.com/embed/xvOJ3DutXbM"
          data-thumb="https://img.youtube.com/vi/xvOJ3DutXbM/maxresdefault.jpg"
          data-num="01" data-views="ADD VIEWS" data-pos="center"></div>
-    <div class="work-item wi-r1-h"
+    <div class="work-item wi-02"
          data-src="https://www.youtube.com/embed/Muuw0TP-XYo"
          data-thumb="https://img.youtube.com/vi/Muuw0TP-XYo/maxresdefault.jpg"
          data-num="02" data-views="ADD VIEWS" data-pos="top"></div>
 
-    <!-- ROW 2: short vertical alone on left, coming soon fills right -->
-    <div class="work-item wi-r2-v1"
-         data-src="https://www.youtube.com/embed/J3_BFS2uz1g"
-         data-thumb="https://img.youtube.com/vi/J3_BFS2uz1g/maxresdefault.jpg"
-         data-num="03" data-views="ADD VIEWS" data-pos="center"></div>
-    <div class="work-item wi-r2-v2"
-         data-src="" data-thumb=""
-         data-num="06" data-views="" data-pos="center"></div>
-    <div class="work-item wi-r2-h"
-         data-src="" data-thumb=""
-         data-num="07" data-views="" data-pos="center"></div>
-
-    <!-- ROW 3: edit 04 — full cinematic single line -->
-    <div class="work-item wi-full"
-         data-src="https://www.youtube.com/embed/-9FQIgBYGY0"
-         data-thumb="https://img.youtube.com/vi/-9FQIgBYGY0/maxresdefault.jpg"
-         data-num="04" data-views="ADD VIEWS" data-pos="top"></div>
-
-    <!-- ROW 4: edit 05 — breathing space, wide centred -->
-    <div class="wi-breath-spacer"></div>
-    <div class="work-item wi-breath-main"
+    <!-- ROW 2: [05 horizontal wide] [03 vertical short] — mirrors row 1 -->
+    <div class="work-item wi-05"
          data-src="https://www.youtube.com/embed/oxPHFX0VeAk"
          data-thumb="https://img.youtube.com/vi/oxPHFX0VeAk/maxresdefault.jpg"
          data-num="05" data-views="ADD VIEWS" data-pos="top"></div>
-    <div class="wi-breath-spacer"></div>
+    <div class="work-item wi-03"
+         data-src="https://www.youtube.com/embed/J3_BFS2uz1g"
+         data-thumb="https://img.youtube.com/vi/J3_BFS2uz1g/maxresdefault.jpg"
+         data-num="03" data-views="ADD VIEWS" data-pos="center"></div>
 
-    <!-- ROW 5: remaining slots -->
-    <div class="work-item wi-r3-h"
+    <!-- ROW 3: [04 full cinematic width] -->
+    <div class="work-item wi-04"
+         data-src="https://www.youtube-nocookie.com/embed/-9FQIgBYGY0"
+         data-thumb="https://img.youtube.com/vi/-9FQIgBYGY0/hqdefault.jpg"
+         data-num="04" data-views="ADD VIEWS" data-pos="center"></div>
+
+    <!-- REMAINING SLOTS -->
+    <div class="work-item wi-rest-v"
+         data-src="" data-thumb=""
+         data-num="06" data-views="" data-pos="center"></div>
+    <div class="work-item wi-rest-h"
+         data-src="" data-thumb=""
+         data-num="07" data-views="" data-pos="center"></div>
+    <div class="work-item wi-rest-h"
          data-src="" data-thumb=""
          data-num="08" data-views="" data-pos="center"></div>
-    <div class="work-item wi-r3-v"
+    <div class="work-item wi-rest-v"
          data-src="" data-thumb=""
          data-num="09" data-views="" data-pos="center"></div>
-    <div class="work-item wi-r4-h"
-         data-src="" data-thumb=""
-         data-num="10" data-views="" data-pos="center"></div>
 
   </div>
 </section>
@@ -560,7 +537,7 @@ footer{background:var(--amalfi-x);padding:22px 56px;display:flex;justify-content
   <div class="founder-inner reveal">
     <div class="founder-photo-wrap">
       <div class="founder-photo-frame">
-        <img src="./rishi-photo.jpeg" alt="Rishi Jain" class="founder-photo" id="founderImg"
+        <img src="rishi-photo.jpeg" alt="Rishi Jain" class="founder-photo" id="founderImg"
              onerror="this.style.display='none';document.getElementById('founderPh').style.display='flex'">
         <div class="founder-ph" id="founderPh">
           <span class="fp-init">RJ</span>
